@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    />
+    <script src="./vueversion3.js"></script>
+    <style>
+      .more {
+        color: rgb(255, 179, 0);
+      }
+      .less {
+        color: greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="container mt-5">
+      <form @submit.prevent="submitForm" class="needs-validation" novalidate>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            v-model.trim="title"
+            type="text"
+            class="form-control"
+            id="title"
+            required
+          />
+          <div class="invalid-feedback">Please enter a title.</div>
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea
+            v-model.trim="content"
+            class="form-control"
+            id="content"
+            rows="3"
+            required
+          ></textarea>
+          <div class="invalid-feedback">Please enter some content.</div>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <div class="form-check">
+            <input
+              v-model="category"
+              class="form-check-input"
+              type="radio"
+              value="development"
+              id="development"
+              required
+            />
+            <label class="form-check-label" for="development">
+              Development
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              v-model="category"
+              class="form-check-input"
+              type="radio"
+              value="networking"
+              id="networking"
+              required
+            />
+            <label class="form-check-label" for="networking">
+              Networking
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              v-model="category"
+              class="form-check-input"
+              type="radio"
+              value="security"
+              id="security"
+              required
+            />
+            <label class="form-check-label" for="security"> Security </label>
+          </div>
+          <div class="form-check">
+            <input
+              v-model="category"
+              class="form-check-input"
+              type="radio"
+              value="devops"
+              id="devops"
+              required
+            />
+            <label class="form-check-label" for="devops"> DevOps </label>
+          </div>
+          <div class="invalid-feedback">Please select a category.</div>
+        </div>
+        <div class="form-group">
+          <label for="social-media">Social Media</label>
+          <div class="form-check">
+            <input
+              v-model="socialMedia.facebook"
+              class="form-check-input"
+              type="checkbox"
+              value="facebook"
+              id="facebook"
+            />
+            <label class="form-check-label" for="facebook"> Facebook </label>
+          </div>
+          <div class="form-check">
+            <input
+              v-model="socialMedia.twitter"
+              class="form-check-input"
+              type="checkbox"
+              value="twitter"
+              id="twitter"
+            />
+            <label class="form-check-label" for="twitter"> Twitter </label>
+          </div>
+          <div class="form-check">
+            <input
+              v-model="socialMedia.instagram"
+              class="form-check-input"
+              type="checkbox"
+              value="instagram"
+              id="instagram"
+            />
+            <label class="form-check-label" for="instagram"> Instagram </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ranking">Ranking</label>
+          <div class="form-check">
+            <input
+              v-model="ranking"
+              class="form-check-input"
+              type="radio"
+              value="first"
+              id="first"
+              required
+            />
+            <label class="form-check-label" for="first"> First </label>
+          </div>
+          <div class="form-check">
+            <input
+              v-model="ranking"
+              class="form-check-input"
+              type="radio"
+              value="second"
+              id="second"
+              required
+            />
+            <label class="form-check-label" for="second"> Second </label>
+          </div>
+          <div class="form-check">
+            <input
+              v-model="ranking"
+              class="form-check-input"
+              type="radio"
+              value="third"
+              id="third"
+              required
+            />
+            <label class="form-check-label" for="third"> Third </label>
+          </div>
+          <div class="invalid-feedback">Please select a ranking.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div v-if="showResult" class="alert alert-success mt-3">
+        <p><strong>Title:</strong> {{ title }}</p>
+        <p><strong>Content:</strong> {{ content }}</p>
+        <p><strong>Category:</strong> {{ category }}</p>
+        <p><strong>Social Media:</strong> {{ socialMedia }}</p>
+        <p><strong>Ranking:</strong> {{ ranking }}</p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmIaVO5C1swYXQpOV+"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Sources -->
+    <script src="./products.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          title: "",
+          content: "",
+          category: "",
+          socialMedia: {
+            facebook: false,
+            twitter: false,
+            instagram: false,
+          },
+          ranking: "",
+          showResult: false,
+        },
+        methods: {
+          submitForm() {
+            if (this.$refs.form.checkValidity()) {
+              this.showResult = true;
+            } else {
+              alert("dddddddddddd");
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
